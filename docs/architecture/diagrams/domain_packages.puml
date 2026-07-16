@@ -1,0 +1,81 @@
+@startuml
+title DonneesQC MCP - Domain packages (class)
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+package "tools" {
+  class FastMCPInit <<(F,#LightBlue)>> {
+    mcp
+    register_all_tools()
+    /health
+  }
+  package "tools.qc" {
+    class QcCatalog
+    class QcGeo
+    class QcOqlf
+    class QcNosorigines
+  }
+  package "tools.mtl" {
+    class MtlCatalog
+    class MtlMurales
+    class MtlLabicyclette
+    class MtlCollecte
+  }
+  package "tools.common" {
+    class CommonTools
+  }
+}
+
+package "helpers.common" {
+  class Portal
+  class ckan_format
+  class tool_call
+  class ckan_api
+  class http_client
+  class response
+  class config
+}
+
+package "helpers.qc" {
+  class geo_api
+  class icherche_format
+  class vitrine_api
+  class nosorigines_api
+}
+
+package "helpers.mtl" {
+  class citations
+  class murales_api
+  class labicyclette_api
+  class collectemtl_api
+}
+
+FastMCPInit --> QcCatalog
+FastMCPInit --> QcGeo
+FastMCPInit --> MtlCatalog
+FastMCPInit --> MtlMurales
+FastMCPInit --> CommonTools
+
+QcCatalog --> tool_call
+QcCatalog --> ckan_format
+QcCatalog --> Portal
+QcCatalog --> ckan_api
+MtlCatalog --> tool_call
+MtlCatalog --> ckan_format
+MtlCatalog --> Portal
+MtlCatalog --> ckan_api
+
+QcGeo --> icherche_format
+QcGeo --> http_client
+MtlMurales --> citations
+MtlMurales --> murales_api
+MtlLabicyclette --> citations
+MtlCollecte --> citations
+
+ckan_api --> http_client
+tool_call --> response
+citations --> response
+Portal --> config
+
+@enduml

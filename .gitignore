@@ -1,20 +1,116 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
+*.py[codz]
 *$py.class
-*.egg-info/
-dist/
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
 .eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
 *.egg
+MANIFEST
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+*.lcov
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Logs / local DBs
+*.log
+db.sqlite3
+db.sqlite3-journal
+
+# Sphinx / docs build
+docs/_build/
+/site
+
+# Jupyter
+.ipynb_checkpoints
+
+# Environments / secrets
 .env
+.env.*
+!.env.example
+.envrc
 .venv/
 venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# PEP 582
+__pypackages__/
+
+# Type checkers / linters
 .mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
 .ruff_cache/
-.pytest_cache/
-htmlcov/
-.coverage
-*.log
+.ty/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
+Thumbs.db
+Desktop.ini
+
+# PyPI
+.pypirc
+
+# setuptools-scm generated version
 _version.py
-PUBLICATION_PLAN.md
+
+# Local / agent runtime state (not source)
+.superpowers/
+.cursor/hooks/state/
+
+# Temporary / generated plantuml dumps
+docs/architecture/diagrams/*_[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9].svg
+*.tmp
+*.bak
+*.orig
+tempCodeRunnerFile.py

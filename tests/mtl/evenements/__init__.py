@@ -1,0 +1,1 @@
+"""Tests evenements publics."""

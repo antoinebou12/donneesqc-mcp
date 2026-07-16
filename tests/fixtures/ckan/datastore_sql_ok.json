@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "result": {
+    "fields": [
+      {"id": "_id", "type": "int"},
+      {"id": "ville", "type": "text"},
+      {"id": "total", "type": "int"}
+    ],
+    "records": [
+      {"ville": "Montreal", "total": 42},
+      {"ville": "Quebec", "total": 17}
+    ],
+    "sql": "SELECT ville, COUNT(*) AS total FROM \"res-1\" GROUP BY ville LIMIT 10"
+  }
+}

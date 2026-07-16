@@ -2,7 +2,7 @@
 
 import logging
 
-from helpers.config import LOG_LEVEL, MCP_ENV, MCP_HOST, MCP_PORT, SENTRY_DSN, SENTRY_SAMPLE_RATE
+from helpers.common.config import LOG_LEVEL, MCP_ENV, MCP_HOST, MCP_PORT, SENTRY_DSN, SENTRY_SAMPLE_RATE
 
 # Logging
 logging.basicConfig(
@@ -34,9 +34,7 @@ def main() -> None:
     register_all_tools()
 
     logger.info("Démarrage du serveur MCP Données Québec sur %s:%s", MCP_HOST, MCP_PORT)
-    logger.info(
-        "28 outils : 8 DQ + 3 MTL + 4 Geo + 1 Stats + 2 Data access + 4 Intelligence + 4 Geo enrichi + 2 DX"
-    )
+    logger.info("28 outils : 8 DQ + 3 MTL + 4 Geo + 1 Stats + 2 Data access + 4 Intelligence + 4 Geo enrichi + 2 DX")
 
     mcp.run(transport="streamable-http")
 

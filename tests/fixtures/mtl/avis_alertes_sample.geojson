@@ -1,0 +1,68 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-73.5635, 45.5015],
+          [-73.5630, 45.5020]
+        ]
+      },
+      "properties": {
+        "titre": "Entrave proche — Beaver Hall / Gauchetiere",
+        "date_debut": "2026-06-01T12:00:00",
+        "date_fin": "2026-08-01T12:00:00",
+        "type": "Circulation et transport",
+        "service_publieur": "Services des communications",
+        "lien": "https://montreal.ca/alertes/exemple-proche"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.5800, 45.5200]
+      },
+      "properties": {
+        "titre": "Point loin — hors rayon",
+        "date_debut": "2026-06-01T12:00:00",
+        "date_fin": "2026-08-01T12:00:00",
+        "type": "Urgence",
+        "service_publieur": "Services des communications",
+        "lien": "https://montreal.ca/alertes/exemple-loin"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.5640, 45.5010]
+      },
+      "properties": {
+        "titre": "Hors fenetre de dates",
+        "date_debut": "2026-01-01T12:00:00",
+        "date_fin": "2026-01-31T12:00:00",
+        "type": "Eau et aqueduc",
+        "service_publieur": "Services des communications",
+        "lien": "https://montreal.ca/alertes/exemple-expire"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.5620, 45.5005]
+      },
+      "properties": {
+        "titre": "Urgence proche",
+        "date_debut": "2026-07-01T00:00:00",
+        "date_fin": "2026-07-31T23:59:59",
+        "type": "Urgence",
+        "service_publieur": "Services des communications",
+        "lien": "https://montreal.ca/alertes/exemple-urgence"
+      }
+    }
+  ]
+}

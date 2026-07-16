@@ -1,0 +1,49 @@
+# Smithery.ai — Streamable HTTP MCP server
+# Docs: https://smithery.ai
+
+startCommand:
+  type: http
+  configSchema:
+    type: object
+    properties:
+      MCP_PORT:
+        type: string
+        title: MCP port
+        description: HTTP port for the Streamable HTTP transport
+        default: "8000"
+      DQ_API_URL:
+        type: string
+        title: Données Québec CKAN API
+        default: "https://www.donneesquebec.ca/recherche/api/3/action"
+      MTL_API_URL:
+        type: string
+        title: Montréal CKAN API
+        default: "https://donnees.montreal.ca/api/3/action"
+      GEOCODER_URL:
+        type: string
+        title: Adresses Québec / iCherche
+        default: "https://geoegl.msp.gouv.qc.ca/apis/icherche"
+      VITRINE_BASE_URL:
+        type: string
+        title: Vitrine linguistique OQLF
+        default: "https://vitrinelinguistique.oqlf.gouv.qc.ca"
+      NOSORIGINES_BASE_URL:
+        type: string
+        title: NosOrigines search
+        default: "https://www.nosorigines.qc.ca"
+      LABICYCLETTE_BASE_URL:
+        type: string
+        title: La bicyclette API
+        description: Montreal cycling dashboard JSON API base URL
+        default: "https://www.labicyclette.ca"
+      COLLECTEMTL_BASE_URL:
+        type: string
+        title: Collecte MTL API
+        description: Montreal waste-collection schedule JSON API base URL
+        default: "https://collectemtl.ca"
+      SENTRY_DSN:
+        type: string
+        title: Sentry DSN
+        description: Optional error monitoring DSN
+  exampleConfig:
+    MCP_PORT: "8000"

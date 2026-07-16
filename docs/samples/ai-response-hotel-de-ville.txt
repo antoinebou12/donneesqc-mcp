@@ -1,0 +1,70 @@
+# Sample AI reply — query: avis / Hydro / QUALO / parcs / BIXI près de l'Hôtel de Ville de Montréal
+# Retrieved: 2026-07-16T22:04:10Z via local tools (live)
+# Tools: qc_geo_geocode, mtl_avis_nearby, qc_hydro_outage_status,
+#         mtl_qualo_nearby, mtl_parcs_nearby, mtl_bixi_nearby
+#         (équivalent composite: mtl_neighborhood_briefing)
+# Instantané — les totaux GBFS / avis évoluent.
+# Point: 275 Rue Notre-Dame Est, Montreal (≈ 45.509, -73.554)
+
+Autour de l'Hôtel de Ville de Montréal (275 rue Notre-Dame Est, ≈ 45.509, -73.554) au 16 juillet 2026 : 8 avis ≤ 1 km, eau de rive (QUALO) bonne aux stations proches, plusieurs parcs et BIXI à pied. Hydro Info-pannes indisponible au moment du snapshot (HTTP 400).
+
+#### Avis / alertes publics (≤ 1 km)
+
+| Dist. | Type | Titre |
+|---|---|---|
+| 12.1 m | Urgence | Avertissement de chaleur en vigueur |
+| 270.8 m | Circulation et transport | Fermeture de la circulation – Avenue de Hôtel-de-Ville, entre Avenue Viger Est et boulevard René-Lévesque Est – Arr. de Ville-Marie |
+| 613.9 m | Circulation et transport | Entrave à la circulation – Rue de la Commune Ouest, entre la rue du Port et Place D'Youville – Arrondissement de Ville-Marie |
+| 745.2 m | Circulation et transport | Fermeture de la circulation – Rue Wolfe, entre la rue Saint-Antoine Est et la rue du Glacis, arrondissement de Ville-Marie |
+| 778.8 m | Circulation et transport | Entrave à la circulation – Rue Atateken, direction Sud, entre le boulevard René-Lévesque et la rue De La Gauchetière, arr. de Ville-Marie |
+| 782.7 m | Circulation et transport | Fermeture la circulation – Rue Atateken, entre le boulevard René-Lévesque Est et rue De La Gauchetière Est, – Ville-Marie |
+| 798.1 m | Circulation et transport | Entrave à la circulation – Rue de la Commune Ouest, entre les rues McGill et du Port, arrondissement de Ville-Marie |
+| 822.2 m | Circulation et transport | Entrave à la circulation – Rue de la Commune Ouest à l'intersection de la rue Saint-Pierre, Arrondissement de Ville-Marie |
+
+Source : https://montreal.ca/avis-et-alertes · https://donnees.montreal.ca/dataset/avis-alertes
+
+#### Hydro-Québec (Info-pannes)
+
+Lookup Info-pannes non disponible pour ce snapshot (erreur HTTP 400 côté API Hydro). Vérifier en live via `qc_hydro_outage_status(address="275 Rue Notre-Dame Est, Montreal")` ou le portail.
+
+Source : https://infopannes.solutions.hydroquebec.com
+
+#### Qualité de l'eau (QUALO, ≤ 1,5 km)
+
+| Dist. | Station | Plan d'eau | Date | Temp. | pH | Colif. fecaux |
+|---|---|---|---|---|---|---|
+| 423.5 m |  | Fleuve Saint-Laurent |  | 24.0 |  | 2 |
+| 762.1 m |  | Fleuve Saint-Laurent |  | 24.0 |  | 8 |
+| 1274.7 m |  | Bassin de Laprairie |  | 23.0 |  | 3 |
+
+Source : https://donnees.montreal.ca/dataset/rsma-qualite-de-l-eau-en-rive-qualo
+
+#### Parcs / places (≤ ~300 m)
+
+| Dist. | Nom | Type |
+|---|---|---|
+| 37.2 m | Champ-de-Mars | Parc de quartier |
+| 42.1 m | Vauquelin | Place publique |
+| 46.1 m | Jardin du Gouverneur | Place publique |
+| 46.1 m | Jardin du Château Ramezay | Espace institutionnel |
+| 65.0 m | Jacques-Cartier | Place publique |
+| 118.0 m | Jacques-Cartier | Place publique |
+| 166.4 m | Marguerite-Bourgeoys | Place publique |
+| 185.2 m | Jacques-Cartier | Place publique |
+
+Source : https://donnees.montreal.ca/dataset/grands-parcs-parcs-d-arrondissements-et-espaces-publics
+
+#### BIXI (≤ 400 m, GBFS live)
+
+| Dist. | Station | Velos | Bornes libres |
+|---|---|---|---|
+| 92.6 m | du Champ-de-Mars / Gosford | 3 | 20 |
+| 146.1 m | Place des Montréalaises (St-Antoine) | 8 | 9 |
+| 199.0 m | Notre-Dame / St-Gabriel | 0 | 10 |
+| 222.8 m | de la Commune / Place Jacques-Cartier | 49 | 28 |
+| 262.7 m | Métro Champ-de-Mars (Viger / Sanguinet) | 17 | 20 |
+| 276.8 m | Hôtel-de-Ville / Viger | 17 | 5 |
+| 367.7 m | de la Commune / Berri | 15 | 30 |
+| 375.7 m | Square Viger (Berri / Viger) | 27 | 1 |
+
+Source : https://donnees.montreal.ca/dataset/bixi-etat-des-stations · https://gbfs.velobixi.com/gbfs/gbfs.json

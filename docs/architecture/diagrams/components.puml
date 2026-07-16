@@ -1,0 +1,64 @@
+@startuml
+title Données Québec MCP - Components
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+
+actor "AI agent\n(MCP client)" as Client
+
+component "FastMCP server\nPOST /mcp\nGET /health" as Server
+
+package "tools/" {
+  component "tools/qc\nCKAN + intelligence" as QcTools
+  component "tools/qc/geo\nWFS/WMS/geocode" as GeoTools
+  component "tools/qc/oqlf|nosorigines" as WebTools
+  component "tools/mtl\n(+ murales/labicyclette/collecte)" as MtlTools
+  component "tools/common\nversion/examples" as SystemTools
+}
+
+package "helpers/" {
+  component "common/ckan_api\nSQL validation" as CKAN
+  component "qc/geo\ngeo_api / coords" as Geo
+  component "qc/oqlf|nosorigines" as PublicWeb
+  component "mtl/*_api" as MtlHelpers
+  component "common/http_client\nretry/rate/cache" as HTTP
+  component "common/response\n_meta citations" as Response
+  component "common/config\nenv defaults" as Config
+}
+
+cloud "Données Québec CKAN" as DQ
+cloud "Données Montréal CKAN" as MTL
+cloud "IGO WFS/WMS\nAdresses Québec iCherche" as IGO
+cloud "OQLF Vitrine\nNosOrigines public pages" as PublicSites
+
+Client --> Server
+Server --> QcTools
+Server --> GeoTools
+Server --> WebTools
+Server --> MtlTools
+Server --> SystemTools
+
+QcTools --> CKAN
+GeoTools --> Geo
+WebTools --> PublicWeb
+MtlTools --> CKAN
+MtlTools --> MtlHelpers
+SystemTools --> Response
+
+CKAN --> HTTP
+Geo --> HTTP
+PublicWeb --> HTTP
+MtlHelpers --> HTTP
+QcTools --> Response
+GeoTools --> Response
+WebTools --> Response
+MtlTools --> Response
+
+HTTP --> Config
+CKAN --> Config
+HTTP --> DQ
+HTTP --> MTL
+HTTP --> IGO
+HTTP --> PublicSites
+
+@enduml

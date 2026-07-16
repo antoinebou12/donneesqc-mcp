@@ -1,0 +1,54 @@
+name: Feature request
+description: Suggest an improvement or new capability for donneesqc-mcp
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing an improvement. Please describe the use case and the data source involved, if any.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What problem would this solve?
+      placeholder: I want to use donneesqc-mcp to...
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed solution
+      description: Describe the behavior, tool, or integration you would like.
+      placeholder: Add a tool that...
+    validations:
+      required: true
+  - type: textarea
+    id: data-source
+    attributes:
+      label: Data source or API
+      description: Link to relevant public documentation, datasets, or APIs.
+      placeholder: https://...
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe any workaround or alternative design you considered.
+    validations:
+      required: false
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact
+      description: Who would benefit from this feature?
+      options:
+        - Maintainers
+        - MCP client users
+        - Tool developers
+        - Documentation readers
+        - Other
+    validations:
+      required: false

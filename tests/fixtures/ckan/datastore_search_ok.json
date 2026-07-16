@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "result": {
+    "total": 2,
+    "fields": [
+      {"id": "_id", "type": "int"},
+      {"id": "ARROND", "type": "text"},
+      {"id": "value", "type": "text"}
+    ],
+    "records": [
+      {"ARROND": "Plateau", "value": "a"},
+      {"ARROND": "Ville-Marie", "value": "b"}
+    ]
+  }
+}

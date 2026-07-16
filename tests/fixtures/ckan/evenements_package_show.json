@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "result": {
+    "name": "vmtl-evenements-publics",
+    "title": "Événements publics",
+    "license_title": "Creative Commons Attribution 4.0",
+    "resources": [
+      {
+        "id": "6decf611-6f11-4f34-bb36-324d804c9bad",
+        "name": "evenements.csv",
+        "format": "CSV",
+        "datastore_active": true
+      }
+    ]
+  }
+}

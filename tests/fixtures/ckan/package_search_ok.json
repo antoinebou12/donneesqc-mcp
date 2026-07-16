@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "result": {
+    "count": 1,
+    "results": [
+      {
+        "id": "pkg-1",
+        "name": "actes-criminels",
+        "title": "Actes criminels",
+        "notes": "Donnees de criminalite",
+        "organization": {"title": "Ville de Montreal", "name": "ville-de-montreal"},
+        "tags": [{"name": "criminalite"}],
+        "num_resources": 1,
+        "metadata_modified": "2024-01-01T00:00:00"
+      }
+    ]
+  }
+}

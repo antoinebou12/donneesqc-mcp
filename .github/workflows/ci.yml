@@ -29,8 +29,8 @@ jobs:
       - name: Install dependencies
         run: uv sync --extra dev
 
-      - name: Ruff lint and import sorting
-        run: uv run ruff check --select I .
+      - name: Ruff lint
+        run: uv run ruff check .
 
       - name: Ruff format check
         run: uv run ruff format --check .
@@ -67,3 +67,34 @@ jobs:
         with:
           name: test-results
           path: test-results/junit.xml
+
+  security:
+    name: Security audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        run: uv python install ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: uv sync --extra dev
+
+      - name: Dependency vulnerability scan
+        run: uv run pip-audit
+
+      - name: Bandit (SAST)
+        run: uv run bandit -r helpers tools main.py asgi.py -q -c pyproject.toml
+
+      - name: Detect secrets (API keys / credentials)
+        run: |
+          uv run detect-secrets scan --baseline .secrets.baseline \
+            --exclude-files '(^|/)\.venv/|(^|/)uv\.lock$|(^|/)\.git/'
+          git diff --exit-code .secrets.baseline

@@ -1,0 +1,13 @@
+flowchart TD
+    A[MCP tool calls upstream source] --> B{Successful response?}
+    B -->|No| C[Return error without synthetic citation]
+    B -->|Yes| D[Build payload]
+    D --> E[Add _meta envelope]
+    E --> F[source and retrieved_at]
+    E --> G[portal_url / dataset_id / resource_id when known]
+    E --> H[license when provided by upstream metadata]
+    E --> I[Community disclaimer]
+    F --> J[Agent cites source]
+    G --> J
+    H --> K[User verifies dataset licence before reuse]
+    I --> K

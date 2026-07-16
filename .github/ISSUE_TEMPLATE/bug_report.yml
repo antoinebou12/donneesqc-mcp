@@ -1,0 +1,67 @@
+name: Bug report
+description: Report a reproducible problem with donneesqc-mcp
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve donneesqc-mcp. Please include enough detail for maintainers to reproduce the issue.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened?
+      placeholder: Describe the bug and the affected MCP tool or endpoint.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal reproduction.
+      placeholder: |
+        1. Configure...
+        2. Run...
+        3. Call tool...
+        4. See error...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+      placeholder: The tool should return...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include versions and runtime details.
+      placeholder: |
+        - OS:
+        - Python:
+        - donneesqc-mcp version or commit:
+        - Install method:
+        - Transport / URL:
+    validations:
+      required: true
+  - type: input
+    id: mcp-client
+    attributes:
+      label: MCP client
+      description: Which MCP client are you using?
+      placeholder: Cursor, Claude Desktop, Claude Code, VS Code, other...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or response
+      description: Paste relevant logs, stack traces, or MCP JSON responses. Remove secrets first.
+      render: shell
+    validations:
+      required: false

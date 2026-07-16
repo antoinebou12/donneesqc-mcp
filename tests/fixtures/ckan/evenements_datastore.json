@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "result": {
+    "resource_id": "6decf611-6f11-4f34-bb36-324d804c9bad",
+    "records": [
+      {
+        "titre": "Festival culturel test",
+        "type_evenement": "Festival",
+        "date_debut": "2026-07-19T10:00:00",
+        "date_fin": "2026-07-19T18:00:00",
+        "emplacement": "Parc La Fontaine",
+        "arrondissement": "Le Plateau-Mont-Royal",
+        "adresse_principale": "",
+        "url_fiche": "https://montreal.ca/lieux/festival-test"
+      },
+      {
+        "titre": "Autre jour",
+        "type_evenement": "Spectacle",
+        "date_debut": "2026-07-20T14:00:00",
+        "date_fin": "2026-07-20T16:00:00",
+        "emplacement": "Place des Arts",
+        "arrondissement": "Ville-Marie",
+        "url_fiche": "https://montreal.ca/lieux/autre"
+      }
+    ]
+  }
+}

@@ -21,4 +21,5 @@ USER mcp
 
 EXPOSE ${MCP_PORT:-8000}
 
-CMD ["uv", "run", "main.py"]
+# Use the project venv directly (avoids editable reinstall / egg-info as non-root)
+CMD ["/app/.venv/bin/python", "main.py"]

@@ -12,6 +12,17 @@ services:
       - MTL_API_URL=${MTL_API_URL:-https://donnees.montreal.ca/api/3/action}
       - GEO_WFS_URL=${GEO_WFS_URL:-https://geoegl.msp.gouv.qc.ca/ws/igo_gouvouvert.fcgi}
       - GEO_WMS_URL=${GEO_WMS_URL:-https://geoegl.msp.gouv.qc.ca/ws/igo_gouvouvert.fcgi}
+      - GEOCODER_URL=${GEOCODER_URL:-https://geoegl.msp.gouv.qc.ca/apis/icherche}
+      - VITRINE_BASE_URL=${VITRINE_BASE_URL:-https://vitrinelinguistique.oqlf.gouv.qc.ca}
+      - NOSORIGINES_BASE_URL=${NOSORIGINES_BASE_URL:-https://www.nosorigines.qc.ca}
+      - HTTP_TIMEOUT=${HTTP_TIMEOUT:-30}
+      - HTTP_MAX_RETRIES=${HTTP_MAX_RETRIES:-3}
+      - HTTP_RATE_LIMIT_RPS=${HTTP_RATE_LIMIT_RPS:-5.0}
+      - HTTP_RATE_LIMIT_BURST=${HTTP_RATE_LIMIT_BURST:-10.0}
+      - HTTP_CACHE_TTL_SECONDS=${HTTP_CACHE_TTL_SECONDS:-60.0}
+      - HTTP_CACHE_MAX_ENTRIES=${HTTP_CACHE_MAX_ENTRIES:-256}
+      - SQL_MAX_LENGTH=${SQL_MAX_LENGTH:-10000}
+      - DOWNLOAD_MAX_BYTES=${DOWNLOAD_MAX_BYTES:-52428800}
       - SENTRY_DSN=${SENTRY_DSN:-}
       - SENTRY_SAMPLE_RATE=${SENTRY_SAMPLE_RATE:-1.0}
     restart: unless-stopped

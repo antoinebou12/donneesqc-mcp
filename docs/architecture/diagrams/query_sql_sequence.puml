@@ -1,0 +1,39 @@
+@startuml
+title qc_query_resource_sql Sequence
+
+skinparam shadowing false
+
+actor "MCP client" as Client
+participant "FastMCP" as MCP
+participant "tools.qc.query_resource_sql" as Tool
+participant "helpers.common.tool_call" as RunTool
+participant "helpers.common.ckan_api" as CKAN
+participant "sqlglot" as SQLGlot
+participant "helpers.common.http_client" as HTTP
+participant "Donnees Quebec\nCKAN DataStore" as DataStore
+participant "helpers.common.response" as Response
+
+Client -> MCP: POST /mcp\nqc_query_resource_sql(sql)
+MCP -> Tool: query_resource_sql(sql)
+Tool -> RunTool: run_tool(action)
+RunTool -> CKAN: datastore_search_sql(api_url, sql)
+CKAN -> CKAN: validate_sql(sql)
+alt ValueError (write / multi-statement / empty)
+  CKAN --> RunTool: ValueError(message)
+  RunTool -> Response: error(str(exc))
+  Response --> Tool: JSON error
+else valid SELECT
+  CKAN -> SQLGlot: parse readonly AST
+  SQLGlot --> CKAN: OK
+  CKAN -> HTTP: fetch_json(.../datastore_search_sql)
+  HTTP -> DataStore: GET
+  DataStore --> HTTP: JSON
+  HTTP --> CKAN: result
+  CKAN --> RunTool: fields/records
+  RunTool -> Response: ok(..., source, portal_url)
+  Response --> Tool: JSON + _meta
+end
+Tool --> MCP: tool response
+MCP --> Client: result
+
+@enduml

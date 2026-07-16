@@ -1,0 +1,23 @@
+@startuml
+title register_all_tools Sequence
+
+skinparam shadowing false
+
+actor "Process" as Proc
+participant "main.py / asgi.py" as Entry
+participant "tools.__init__" as Init
+participant "importlib" as Imp
+participant "tools.qc.* / tools.mtl.* / tools.common.*" as Mods
+participant "FastMCP mcp" as MCP
+
+Proc -> Entry: start server
+Entry -> Init: register_all_tools()
+loop each module path
+  Init -> Imp: import_module(name)
+  Imp -> Mods: load module
+  Mods -> MCP: @mcp.tool(name=qc_*|mtl_*|common_*)
+end
+Entry -> MCP: streamable_http_app() / mcp.run()
+MCP --> Proc: POST /mcp ready\nGET /health ready
+
+@enduml
