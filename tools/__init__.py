@@ -59,7 +59,8 @@ Conseils :
 14. Pour le contexte date/GPS/IP : common_get_context (jamais l'IP du serveur)
 15. Pour une panne a une adresse : qc_hydro_outage_status
 16. Outils unitaires a proximite : mtl_qualo_nearby / mtl_parcs_nearby / mtl_bixi_nearby
-17. Cite toujours la source officielle dans les reponses
+17. NosOrigines : qc_nosorigines_search puis qc_nosorigines_get_person(pid) / qc_nosorigines_get_ancestors
+18. Cite toujours la source officielle dans les reponses
 """,
 )
 

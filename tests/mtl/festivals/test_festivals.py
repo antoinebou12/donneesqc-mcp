@@ -71,7 +71,7 @@ def test_jazzfest_free_vs_paid_isolation():
     free_titles = {e["title"] for e in free["events"]}
     paid_titles = {e["title"] for e in paid["events"]}
     assert "Patrick Watson" in free_titles
-    assert "Isaiah Collier - A Love Supreme" in paid_titles
+    assert "Isaiah Collier — A Love Supreme" in paid_titles
     assert free_titles.isdisjoint(paid_titles)
 
 

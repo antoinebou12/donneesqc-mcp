@@ -46,7 +46,7 @@ def test_filter_nearby_linestring_beats_far_point():
         limit=20,
     )
     titres = [h["titre"] for h in hits]
-    assert "Entrave proche - Beaver Hall / Gauchetiere" in titres
+    assert "Entrave proche — Beaver Hall / Gauchetiere" in titres
     assert "Urgence proche" in titres
     assert "Point loin - hors rayon" not in titres
     assert "Hors fenetre de dates" not in titres
