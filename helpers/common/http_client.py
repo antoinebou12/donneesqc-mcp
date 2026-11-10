@@ -195,6 +195,7 @@ async def fetch_json(
     params: dict[str, Any] | None = None,
     *,
     use_cache: bool = True,
+    headers: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """GET JSON avec retry exponentiel et cache TTL optionnel."""
     key = _cache_key(url, params) if use_cache else ""
@@ -205,7 +206,7 @@ async def fetch_json(
             return cached
 
     resp = await _retry(
-        lambda client, u, p: client.get(u, params=p),
+        lambda client, u, p: client.get(u, params=p, headers=headers),
         url=url,
         params=params,
     )
@@ -220,6 +221,7 @@ async def fetch_text(
     params: dict[str, Any] | None = None,
     *,
     use_cache: bool = True,
+    headers: dict[str, str] | None = None,
 ) -> str:
     """GET retournant du texte brut (XML, etc.) avec retry et cache optionnel."""
     key = _cache_key(url, params) if use_cache else ""
@@ -230,7 +232,7 @@ async def fetch_text(
             return cached
 
     resp = await _retry(
-        lambda client, u, p: client.get(u, params=p),
+        lambda client, u, p: client.get(u, params=p, headers=headers),
         url=url,
         params=params,
     )
@@ -255,12 +257,18 @@ async def fetch_post_form(
     return resp.text
 
 
-async def fetch_bytes(url: str, *, max_bytes: int | None = None) -> bytes:
-    """GET retournant des bytes bruts (CSV, XLSX, etc.) avec limite de taille.
+async def fetch_bytes(
+    url: str,
+    *,
+    max_bytes: int | None = None,
+    headers: dict[str, str] | None = None,
+) -> bytes:
+    """GET retournant des bytes bruts (CSV, XLSX, protobuf, etc.) avec limite de taille.
 
     Args:
         url: URL du fichier a telecharger.
         max_bytes: Taille maximale en octets (defaut: DOWNLOAD_MAX_BYTES).
+        headers: En-tetes HTTP optionnels (ex. apiKey STM + Accept protobuf).
 
     Raises:
         RuntimeError: Si le fichier depasse la limite de taille.
@@ -269,7 +277,7 @@ async def fetch_bytes(url: str, *, max_bytes: int | None = None) -> bytes:
     await _acquire_rate_limit(url)
     client = await get_client()
 
-    async with client.stream("GET", url) as resp:
+    async with client.stream("GET", url, headers=headers) as resp:
         resp.raise_for_status()
 
         # Verifier Content-Length si disponible

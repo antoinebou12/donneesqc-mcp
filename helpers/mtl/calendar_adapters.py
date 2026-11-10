@@ -1,4 +1,4 @@
-"""Adapters: domain rows → CalendarItem for GCal / day-agenda ASCII."""
+"""Adapters: domain rows → CalendarItem for GCal / day-agenda markdown."""
 
 from __future__ import annotations
 
@@ -26,6 +26,15 @@ def _iso_date(raw: Any) -> str | None:
     text = str(raw).strip()
     match = _DATE_RE.match(text)
     return match.group(1) if match else None
+
+
+def _as_float(value: Any) -> float | None:
+    if value is None or value == "":
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
 
 
 def festival_event_to_item(event: dict[str, Any]) -> CalendarItem:
@@ -80,6 +89,8 @@ def festival_event_to_item(event: dict[str, Any]) -> CalendarItem:
         place=str(event["venue_or_stage"]) if event.get("venue_or_stage") else None,
         url=str(url) if url else None,
         source=source,
+        latitude=_as_float(event.get("latitude") or event.get("lat")),
+        longitude=_as_float(event.get("longitude") or event.get("lon") or event.get("lng")),
     )
 
 
@@ -97,6 +108,8 @@ def avis_alert_to_item(alert: dict[str, Any]) -> CalendarItem:
     titre = alert.get("titre") or "Avis"
     type_lbl = alert.get("type")
     title = f"{titre} · {type_lbl}" if type_lbl else str(titre)
+    lat = _as_float(alert.get("nearest_lat") or alert.get("latitude") or alert.get("lat"))
+    lon = _as_float(alert.get("nearest_lon") or alert.get("longitude") or alert.get("lon"))
     return CalendarItem(
         kind="avis",
         start=start_s,
@@ -106,6 +119,8 @@ def avis_alert_to_item(alert: dict[str, Any]) -> CalendarItem:
         place=None,
         url=str(alert["lien"]) if alert.get("lien") else None,
         source="avis_alertes",
+        latitude=lat,
+        longitude=lon,
     )
 
 
@@ -132,6 +147,8 @@ def evenement_row_to_item(row: dict[str, Any]) -> CalendarItem:
         place=str(place) if place else None,
         url=str(url) if url else None,
         source="evenements_publics",
+        latitude=_as_float(row.get("latitude") or row.get("lat")),
+        longitude=_as_float(row.get("longitude") or row.get("lon") or row.get("lng")),
     )
 
 

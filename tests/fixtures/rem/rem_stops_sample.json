@@ -1,0 +1,247 @@
+{
+  "generated_at": "test",
+  "source": "fixture",
+  "stop_count": 21,
+  "stops": [
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_01_DUQ",
+      "stop_name": "Station Du Quartier - Quai 1",
+      "lat": 45.446947,
+      "lon": -73.433524,
+      "parent_station": "ST_DUQ_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_02_DUQ",
+      "stop_name": "Station Du Quartier - Quai 2",
+      "lat": 45.446857,
+      "lon": -73.43366,
+      "parent_station": "ST_DUQ_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_01_GCT",
+      "stop_name": "Station Gare Centrale - Quai 1",
+      "lat": 45.500115,
+      "lon": -73.566838,
+      "parent_station": "ST_GCT_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_02_GCT",
+      "stop_name": "Station Gare Centrale - Quai 2",
+      "lat": 45.499906,
+      "lon": -73.56702,
+      "parent_station": "ST_GCT_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_01_IDS",
+      "stop_name": "Station Île-des-Soeurs - Quai 1",
+      "lat": 45.470357,
+      "lon": -73.538538,
+      "parent_station": "ST_IDS_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_02_IDS",
+      "stop_name": "Station Île-des-Soeurs - Quai 2",
+      "lat": 45.470305,
+      "lon": -73.538547,
+      "parent_station": "ST_IDS_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_01_PAN",
+      "stop_name": "Station Panama - Quai 1",
+      "lat": 45.465012,
+      "lon": -73.470171,
+      "parent_station": "ST_PAN_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_02_PAN",
+      "stop_name": "Station Panama - Quai 2",
+      "lat": 45.464879,
+      "lon": -73.47019,
+      "parent_station": "ST_PAN_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_01_RIV",
+      "stop_name": "Station Brossard - Quai 1",
+      "lat": 45.438003,
+      "lon": -73.430645,
+      "parent_station": "ST_RIV_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_02_RIV",
+      "stop_name": "Station Brossard - Quai 2",
+      "lat": 45.438056,
+      "lon": -73.430683,
+      "parent_station": "ST_RIV_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_03_RIV",
+      "stop_name": "Station Brossard - Quai 3",
+      "lat": 45.437947,
+      "lon": -73.430628,
+      "parent_station": "ST_RIV_1",
+      "location_type": "0"
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_01_A40",
+      "stop_name": "Station Côte-de-Liesse - Quai 1",
+      "lat": 45.521855,
+      "lon": -73.66185,
+      "parent_station": "ST_A40_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_02_A40",
+      "stop_name": "Station Côte-de-Liesse - Quai 2",
+      "lat": 45.521795,
+      "lon": -73.661889,
+      "parent_station": "ST_A40_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_03_A40",
+      "stop_name": "Station Côte-de-Liesse - Quai 3",
+      "lat": 45.52179,
+      "lon": -73.66188,
+      "parent_station": "ST_A40_1",
+      "location_type": "0"
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_01_BFC",
+      "stop_name": "Station Bois-Franc - Quai 1",
+      "lat": 45.522063,
+      "lon": -73.712578,
+      "parent_station": "ST_BFC_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_01_MCG",
+      "stop_name": "Station McGill - Quai 1",
+      "lat": 45.502695,
+      "lon": -73.572374,
+      "parent_station": "ST_MCG_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "STA_ZCD_BT_QUAI_02_MCG",
+      "stop_name": "Station McGill - Quai 2",
+      "lat": 45.502651,
+      "lon": -73.572415,
+      "parent_station": "ST_MCG_1",
+      "location_type": "0",
+      "route_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "stop_id": "ST_GCT_1",
+      "stop_name": "Station Gare Centrale",
+      "lat": 45.500048,
+      "lon": -73.566978,
+      "location_type": "1"
+    },
+    {
+      "stop_id": "ST_MCG_1",
+      "stop_name": "Station McGill",
+      "lat": 45.502535,
+      "lon": -73.572116,
+      "location_type": "1"
+    },
+    {
+      "stop_id": "ST_GRM_1_entree_porte_A",
+      "stop_name": "Entrée Porte A - Rue de la Gare",
+      "lat": 45.53691,
+      "lon": -73.887,
+      "parent_station": "ST_GRM_1",
+      "location_type": "2"
+    },
+    {
+      "stop_id": "STA_ZCD_UP_SD_01C_GCT",
+      "stop_name": "Zone de retournement Gare Centrale voie 2",
+      "lat": 45.496234,
+      "lon": -73.558798,
+      "location_type": "0"
+    }
+  ]
+}

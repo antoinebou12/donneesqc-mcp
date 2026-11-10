@@ -23,7 +23,7 @@ async def find_parcs_nearby(
     Dataset: https://donnees.montreal.ca/dataset/grands-parcs-parcs-d-arrondissements-et-espaces-publics
 
     Parameters:
-        address: Adresse a geocoder (ex. '275 Rue Notre-Dame Est, Montreal').
+        address: Adresse a geocoder (ex. 'Hôtel de Ville de Montréal').
         latitude: Latitude WGS84 (avec longitude).
         longitude: Longitude WGS84.
         radius_m: Rayon en metres (50-5000, defaut 800).

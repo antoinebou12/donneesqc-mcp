@@ -1,0 +1,44 @@
+{
+  "incidents": [
+    {
+      "id": "EVT-1",
+      "type": "CONSTRUCTION",
+      "subtype": "ROAD_CLOSED",
+      "description": "Fermeture partielle rue Notre-Dame",
+      "starttime": "2020-01-01T00:00:00-05:00",
+      "endtime": "2099-12-31T23:59:59-05:00",
+      "updatetime": "2026-07-16T12:00:00-04:00",
+      "location": {
+        "street": "rue Notre-Dame Est",
+        "direction": "BOTH_DIRECTIONS",
+        "polyline": "45.5088 -73.5541 45.5090 -73.5535"
+      }
+    },
+    {
+      "id": "EVT-FAR",
+      "type": "CONSTRUCTION",
+      "subtype": "LANE_CLOSED",
+      "description": "Loin du centre",
+      "starttime": "2020-01-01T00:00:00-05:00",
+      "endtime": "2099-12-31T23:59:59-05:00",
+      "location": {
+        "street": "boulevard Gouin",
+        "direction": "ONE_DIRECTION",
+        "polyline": "45.58 -73.65 45.581 -73.649"
+      }
+    },
+    {
+      "id": "EVT-EXPIRED",
+      "type": "SPECIAL_EVENT",
+      "subtype": "ROAD_CLOSED",
+      "description": "Termine",
+      "starttime": "2020-01-01T00:00:00-05:00",
+      "endtime": "2020-01-02T00:00:00-05:00",
+      "location": {
+        "street": "rue Saint-Denis",
+        "direction": "BOTH_DIRECTIONS",
+        "polyline": "45.5089 -73.5540 45.5091 -73.5538"
+      }
+    }
+  ]
+}

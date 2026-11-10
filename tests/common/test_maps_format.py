@@ -7,6 +7,8 @@ from helpers.common.maps_format import (
     attach_nearby_maps,
     google_maps_directions_url,
     google_maps_url,
+    openstreetmap_embed_url,
+    openstreetmap_url,
 )
 
 
@@ -44,6 +46,19 @@ def test_attach_maps_pin_coords():
     row = attach_maps_pin({"id": 1, "latitude": 45.5, "longitude": -73.5})
     assert row["google_maps_url"].startswith("https://www.google.com/maps/search/")
     assert row["id"] == 1
+    assert row["openstreetmap_url"] == "https://www.openstreetmap.org/?mlat=45.5&mlon=-73.5#map=17/45.5/-73.5"
+
+
+def test_osm_invalid_coordinates():
+    assert openstreetmap_url(float("nan"), -73.5) is None
+    assert openstreetmap_url(91, -73.5) is None
+    assert openstreetmap_url(None, None) is None
+
+
+def test_osm_embed():
+    url = openstreetmap_embed_url(45.5088, -73.5541, 800)
+    assert url.startswith("https://www.openstreetmap.org/export/embed.html?bbox=")
+    assert "marker=45.5088,-73.5541" in url
 
 
 def test_attach_maps_pin_address_key():

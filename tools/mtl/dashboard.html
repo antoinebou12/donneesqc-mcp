@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Montréal à portée de main</title>
+<style>
+:root{color-scheme:light;--ink:#173c35;--muted:#586e66;--paper:#f4f5ed;--line:#dce3d8;--accent:#d9ed83;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a,input,select{outline-offset:4px}button{cursor:pointer}button:disabled{cursor:wait;opacity:.6}main{max-width:1120px;margin:auto;padding:30px}header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:24px;border-bottom:1px solid var(--line)}.brand{font-size:20px;font-weight:800;letter-spacing:-1px}.brand span{display:inline-grid;place-items:center;background:var(--ink);color:var(--accent);border-radius:12px;width:38px;height:38px;margin-right:10px;letter-spacing:0}.tag,.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.8px;font-weight:700}.tag{border:1px solid var(--line);border-radius:30px;padding:9px 13px}.intro{display:grid;grid-template-columns:1.6fr 1fr;align-items:center;gap:20px;padding:34px 0 26px}.eyebrow{color:var(--muted)}h1{font-size:clamp(32px,5vw,58px);line-height:1.06;letter-spacing:-2px;font-weight:650;margin:14px 0}h1 em{font-family:Georgia,serif;font-weight:400}p{line-height:1.6}.intro p{color:var(--muted);max-width:470px;margin-bottom:0}.city{width:100%;max-height:160px}.search{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;gap:12px;align-items:end}.field{flex:1}label{display:block;font-size:12px;font-weight:650;margin-bottom:7px}input,select{width:100%;border:1px solid var(--line);border-radius:9px;background:var(--paper);padding:12px;color:var(--ink)}.radius{max-width:150px}button.primary{background:var(--ink);color:white;border:0;border-radius:10px;padding:13px 20px;font-weight:600}.places{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 24px}.places button{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:25px;padding:7px 12px;font-size:12px}.places button:hover{background:var(--accent);color:var(--ink)}.status{font-size:13px;color:var(--muted);min-height:24px;margin-bottom:14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);border-radius:20px;padding:24px;background:#fff;min-width:0}.card.weather{background:var(--ink);color:#fff;border:0}.card h2{font-size:19px;margin:0 0 5px;letter-spacing:-.5px}.sub{font-size:12px;color:var(--muted);margin:0 0 22px}.weather .sub,.weather .source{color:#d3e1d7}.temperature{font-size:64px;letter-spacing:-3px;margin:12px 0}.weather-detail{color:var(--accent);margin-bottom:24px}.forecast{display:flex;gap:12px;flex-wrap:wrap}.day{border-top:1px solid #507169;padding:12px 12px 0 0;font-size:13px;line-height:1.8}.row{display:flex;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}.number{font-size:11px;color:var(--muted);width:20px}.row-main{flex:1;min-width:0}.row-title{font-size:14px;font-weight:600;overflow-wrap:anywhere}.row-detail{font-size:12px;color:var(--muted);margin-top:5px}.map{font-size:12px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:7px 10px}.source{display:inline-block;color:var(--muted);font-size:11px;margin-top:18px;overflow-wrap:anywhere}.empty{color:var(--muted);font-size:14px;padding:22px 0;line-height:1.6}.weather .empty{color:#d3e1d7}footer{font-size:11px;color:var(--muted);padding:24px 0;line-height:1.7}.error{color:#a83b29}.weather .error{color:#ffd2c7}[aria-busy=true] .card{opacity:.65} @media(max-width:620px){main{padding:18px}.intro{grid-template-columns:1fr}.city{display:none}.search{flex-wrap:wrap}.field{flex-basis:100%}.radius{flex-basis:auto;max-width:none}.grid{grid-template-columns:1fr}.tag{font-size:9px}h1{letter-spacing:-1px}.card{padding:20px}}@media(prefers-reduced-motion:no-preference){button,a{transition:background .15s}.card{transition:opacity .15s}}
+.filters button[aria-pressed="true"]{background:var(--ink);color:white;border-color:var(--ink)}.notice{background:var(--paper);border-radius:10px;padding:12px;font-size:12px;line-height:1.6;color:var(--muted);margin:12px 0}.source+.source{margin-left:12px}.card[hidden]{display:none}.row-detail{line-height:1.6}.row{align-items:flex-start}.map{white-space:nowrap}.source-label{font-size:11px;color:var(--muted)}
+.neighborhood-map{margin:0 0 20px}.neighborhood-map iframe{width:100%;height:320px;border:0;border-radius:12px}.map-links{display:flex;flex-direction:column;gap:6px}.neighborhood-map[hidden]{display:none}
+.grid{align-items:start}.card{max-height:560px;overflow:auto;scrollbar-width:thin}
+:root[data-theme=dark]{color-scheme:dark;--ink:#dcece4;--muted:#adbbb4;--paper:#17221e;--line:#3c5045;--accent:#d9ed83;background:var(--paper)}
+:root[data-theme=dark] .card,:root[data-theme=dark] .search{background:#22332b}
+:root[data-theme=dark] .weather{background:#193d32;color:#fff}
+:root[data-theme=dark] button.primary,:root[data-theme=dark] .filters button[aria-pressed=true]{background:var(--accent);color:#173c35}
+body.embedded main{padding:16px}body.embedded .intro{padding:16px 0}body.embedded h1{font-size:32px}body.embedded .intro p,body.embedded .city{display:none}body.embedded .neighborhood-map iframe{height:240px}
+</style>
+</head>
+<body><main>
+<header><div class="brand"><span>m.</span>montréal</div><div class="tag">La ville, côté quartier</div></header>
+<section class="intro"><div><div class="eyebrow">Explorer les environs</div><h1>Montréal, <em>à portée<br>de main.</em></h1><p>Les infos du quotidien autour de vous : stationnement, demandes 311, déplacements et idées de sorties.</p></div>
+<svg class="city" viewBox="0 0 380 160" fill="none" aria-hidden="true"><path d="M5 142H375M15 130H365" stroke="#abc4ba"/><path d="M35 130V95H65V130M80 130V63H115V130M130 130V80H153V130M168 130V40H206V130M223 130V85H260V130M280 130V70H315V130" stroke="#507b6b" stroke-width="2"/><path d="M168 40L187 18L206 40M187 18V5M90 63V47H105V63M235 85V63H247V85" stroke="#507b6b" stroke-width="2"/><circle cx="298" cy="30" r="21" fill="#d9ed83"/><path d="M3 113Q52 38 90 78M308 130V105M335 130V91" stroke="#507b6b" stroke-width="2"/><circle cx="335" cy="80" r="17" fill="#b7d4b4"/><circle cx="355" cy="105" r="13" fill="#d9ed83"/><path d="M355 117V130" stroke="#507b6b"/><path d="M177 60H197M177 75H197M177 90H197M177 105H197M88 80H106M88 94H106M288 87H306M288 101H306" stroke="#abc4ba" stroke-width="3"/></svg></section>
+<form class="search" id="search"><div class="field"><label for="address">Votre point de départ</label><input id="address" name="address" required maxlength="300" value="Hôtel de Ville de Montréal" autocomplete="off"></div><div class="field radius"><label for="radius">À proximité</label><select id="radius"><option value="400">400 mètres</option><option value="800" selected>800 mètres</option><option value="1500">1,5 km</option><option value="3000">3 km</option></select></div><button class="primary" id="submit">Explorer</button></form>
+<div class="places" aria-label="Lieux à explorer"><button type="button">Hôtel de Ville de Montréal</button><button type="button">Marché Jean-Talon</button><button type="button">Place des Arts</button></div>
+<nav class="filters places" aria-label="Thèmes"><button type="button" data-filter="all" aria-pressed="true">Tout voir</button><button type="button" data-filter="daily" aria-pressed="false">Au quotidien</button><button type="button" data-filter="move" aria-pressed="false">Se déplacer</button><button type="button" data-filter="out" aria-pressed="false">Sortir et découvrir</button></nav>
+<div id="status" class="status" role="status" aria-live="polite">Choisissez un lieu pour explorer le quartier.</div>
+<section class="card neighborhood-map" id="map-panel" hidden><h2>Le quartier sur la carte</h2><p class="sub">OpenStreetMap · le repère indique votre point de départ</p><iframe id="neighborhood-map" title="Carte OpenStreetMap du quartier" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups"></iframe><p id="map-link"></p></section>
+<div class="grid" id="cards" aria-busy="false"><section class="card weather" id="weather"><h2>Le ciel du quartier</h2><p class="empty">La météo apparaîtra ici.</p></section><section class="card" id="bixi"><h2>Partir à vélo</h2><p class="empty">Les stations BIXI apparaîtront ici.</p></section><section class="card" id="parks"><h2>Prendre l’air</h2><p class="empty">Les parcs à proximité apparaîtront ici.</p></section><section class="card" id="stm"><h2>Prendre le bus ou le métro</h2><p class="empty">Les arrêts STM apparaîtront ici.</p></section></div>
+<footer>mtl-mcp · Projet communautaire indépendant. Disponibilité selon les sources.<br>STM : arrêts issus du catalogue GTFS, sans horaires en temps réel. Météo : Open-Meteo, CC BY 4.0.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id),embedded=window.parent!==window,pending=new Map();let nextId=1,ready=false,busy=false;
+document.body.classList.toggle('embedded',embedded);
+function hostContext(context){if(context?.theme)document.documentElement.dataset.theme=context.theme==='dark'?'dark':'light';}
+function rpc(method,params){return new Promise((resolve,reject)=>{const id=nextId++;const timer=setTimeout(()=>{pending.delete(id);reject(new Error('La connexion a expiré. Réessayez.'));},60000);pending.set(id,{resolve,reject,timer});parent.postMessage({jsonrpc:'2.0',id,method,params},'*');});}
+function notify(method,params={}){parent.postMessage({jsonrpc:'2.0',method,params},'*');}
+function unpack(result){if(result.isError)throw new Error('Impossible de charger ce lieu. Réessayez.');if(result.structuredContent)return result.structuredContent;const text=result.content?.find(x=>x.type==='text')?.text;return text?JSON.parse(text):result;}
+window.addEventListener('message',event=>{if(!embedded||event.source!==parent||event.data?.jsonrpc!=='2.0')return;const m=event.data,p=pending.get(m.id);if(p){clearTimeout(p.timer);pending.delete(m.id);m.error?p.reject(new Error(m.error.message)):p.resolve(m.result);}else if(m.method==='ui/notifications/tool-result'){try{render(unpack(m.params));}catch(e){status(e.message,true);}}else if(m.method==='ping'){parent.postMessage({jsonrpc:'2.0',id:m.id,result:{}},'*');}else if(m.method==='ui/notifications/host-context-changed'){hostContext(m.params);}else if(m.method==='ui/resource-teardown'){for(const p of pending.values()){clearTimeout(p.timer);p.reject(new Error('Application fermée.'));}pending.clear();parent.postMessage({jsonrpc:'2.0',id:m.id,result:{}},'*');}});
+function node(tag,text,cls){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;}
+function safeUrl(value){try{const u=new URL(value);return u.protocol==='https:'?u.href:null;}catch{return null;}}
+function link(text,url,cls){const a=node('a',text,cls);a.href=url;a.target='_blank';a.rel='noopener noreferrer';if(embedded)a.onclick=e=>{e.preventDefault();rpc('ui/open-link',{url}).catch(e=>status(e.message,true));};return a;}
+function status(text,error=false){$('status').textContent=text;$('status').className='status'+(error?' error':'');}
+
+const titles={
+ weather:['Le ciel du quartier','Conditions et prévisions','daily'],
+ requests311:['Les demandes au 311','Dernière période publiée · 30 jours','daily'],
+ parking:['Avant de stationner','Panneaux d’interdiction à proximité','move'],
+ snowparking:['Stationner pendant le déneigement','Stationnements saisonniers','move'],
+ roadworks:['Travaux et entraves','Circulation et permis de travaux','move'],
+ bixi:['Partir à vélo','Stations BIXI à proximité','move'],
+ stm:['Prendre le bus ou le métro','Arrêts STM · catalogue GTFS','move'],
+ parks:['Prendre l’air','Parcs et espaces verts','out'],
+ restaurants:['Une pause à table','Restaurants et cafés · Données Québec','out'],
+ tourism:['Découvrir le quartier','Culture et loisirs · Données Québec','out'],
+ avis:['Les avis du quartier','Avis municipaux en vigueur','daily'],
+ murals:['Voir les murales','Art public à proximité','out'],
+ rem:['Rejoindre le REM','Stations et quais · catalogue GTFS','move'],
+ ecocentres:['Déposer et recycler','Écocentres les plus proches · Collecte MTL','daily'],
+ events:['Sortir cette semaine','Événements à venir · filtre géographique approximatif','out']
+};
+const notes={
+ requests311:'Une demande ne confirme pas une intervention. Seules les demandes publiées et géolocalisées sont affichées, avec le statut fourni par la Ville.',
+ parking:'Ces panneaux ne permettent pas de conclure que le stationnement est autorisé maintenant. Vérifiez tous les panneaux sur place; aucune disponibilité ni tarification en direct.',
+ snowparking:'Lots prévus pour le déneigement. Vérifiez la période, les heures et les conditions sur place. Le nombre de places ne représente pas les places libres.',
+ restaurants:'Aperçu du répertoire touristique du Québec, non exhaustif. Les heures d’ouverture ne sont pas vérifiées.',
+ tourism:'Aperçu du répertoire touristique du Québec, non exhaustif. Vérifiez les horaires auprès du lieu.'
+};
+for(const [key,[title,subtitle,group]] of Object.entries(titles)){
+ let card=$(key);if(!card){card=node('section',undefined,'card');card.id=key;card.append(node('h2',title),node('p',subtitle,'sub'),node('p','Explorez un lieu pour afficher les résultats.','empty'));}
+ card.dataset.group=group;$('cards').append(card);
+}
+let activeFilter='all';
+function applyFilter(){for(const key of Object.keys(titles))$(key).hidden=activeFilter!=='all'&&titles[key][2]!==activeFilter;}
+for(const button of document.querySelectorAll('[data-filter]'))button.onclick=()=>{activeFilter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));applyFilter();};
+function rows(data,key){
+ if(key==='tourism')return Object.entries(data.by_category||{}).filter(([category])=>!['restauration','hotels'].includes(category)).flatMap(([category,group])=>(group.places||[]).map(p=>({...p,category_label:group.label,source_url:group.source}))).sort((a,b)=>(a.distance_m??Infinity)-(b.distance_m??Infinity));
+ for(const name of ['stations','parks','stops','restrictions','lots','entraves','restaurants','places','results','items','alerts','murals','ecocentres'])if(Array.isArray(data[name]))return data[name];return [];
+}
+function detail(item,key){
+ const parts=[];if(Number.isFinite(item.distance_m))parts.push(`${Math.round(item.distance_m)} m`);
+ if(key==='bixi'&&item.num_bikes_available!=null)parts.push(`${item.num_bikes_available} vélos`);
+ if(key==='stm'&&item.stop_code)parts.push(`Arrêt ${item.stop_code}`);
+ if(key==='requests311')parts.push(String(item.date||'').slice(0,10),item.status||'Statut non publié');
+ if(key==='parking')parts.push(item.toponyme,item.arrondissement);
+ if(key==='snowparking')parts.push(item.type_pay,item.heures,item.nbr_places?`${item.nbr_places} places (capacité)`:null,item.note_fr);
+ if(key==='murals')parts.push(item.artiste,item.annee);
+ if(key==='avis')parts.push(item.type,item.date_debut,item.date_fin);
+ if(key==='events')parts.push(item.start,item.place);
+ if(key==='roadworks')parts.push(item.description,item.endtime?`Fin prévue : ${String(item.endtime).slice(0,10)}`:null);
+ if(['tourism','restaurants'].includes(key))parts.push(item.category_label,item.type,item.cuisine);
+ return parts.filter(Boolean).join(' · ');
+}
+function render(data){
+ if(!data?.sections)throw new Error('Réponse inattendue. Réessayez.');
+ $('address').value=data.query||data.address;$('radius').value=String(data.radius_m);let failures=0;
+ if(data.view&&['all','daily','move','out'].includes(data.view)){activeFilter=data.view;document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===activeFilter)));}
+ const mapUrl=safeUrl(data.openstreetmap_embed_url),osmUrl=safeUrl(data.openstreetmap_url);
+ if(mapUrl&&new URL(mapUrl).origin==='https://www.openstreetmap.org'){$('neighborhood-map').src=mapUrl;$('map-panel').hidden=false;}
+ $('map-link').replaceChildren();if(osmUrl)$('map-link').append(link('Ouvrir la carte OpenStreetMap ↗',osmUrl,'map'));
+ for(const [key,[title,subtitle]] of Object.entries(titles)){
+  const card=$(key),d=data.sections[key]||{error:'Source indisponible.'};
+  card.replaceChildren(node('h2',title),node('p',subtitle,'sub'));
+  if(notes[key])card.append(node('p',notes[key],'notice'));
+  if(d.latest_available_date)card.append(node('p',`${d.historical?'Archives de la source':'Période publiée'} : du ${d.since} au ${d.through}. Dernière demande géolocalisée publiée dans cette source : ${d.latest_available_date}.`,'notice'));
+  if(d.source_season)card.append(node('p',`Saison du fichier publié : ${d.source_season}. Vérifiez les conditions de la saison actuelle.`,'notice'));
+  if(d.expanded_from_radius_m)card.append(node('p',`Aucun lot à ${d.expanded_from_radius_m} m. Recherche élargie à ${d.search_radius_m} m pour montrer les plus proches.`,'notice'));
+  if(d.fallback&&d.note)card.append(node('p',d.note,'notice'));
+  if(d.warning)card.append(node('p','Couverture partielle : certaines sources ne répondent pas.','notice'));
+  if(d.error){failures++;card.append(node('p',String(d.error),'empty error'));}
+  else if(key==='weather'){
+   const c=d.current||{};card.append(node('div',c.temperature_c==null?'Indisponible':`${Math.round(c.temperature_c)}°`,'temperature'),node('div',c.weather_label_fr||'Conditions non disponibles','weather-detail'));
+   const forecast=node('div',undefined,'forecast');for(const day of (d.daily||[]).slice(0,3))forecast.append(node('div',`${day.date} · ${day.temp_min_c??'?'}° / ${day.temp_max_c??'?'}°`,'day'));card.append(forecast);
+  }else{
+   const items=rows(d,key);
+   if(d.errors){failures++;card.append(node('p','Certaines catégories sont indisponibles. Les résultats ci-dessous sont partiels.','notice'));}
+   if(d.truncated)card.append(node('p','Sélection limitée aux demandes les plus récentes. Réduisez le rayon pour affiner la recherche.','notice'));
+   if(!items.length)card.append(node('p',key==='requests311'?'Aucune demande géolocalisée trouvée dans ce rayon pour la période affichée.':'Aucun résultat publié trouvé dans ce rayon. Essayez un rayon plus grand.','empty'));
+   items.slice(0,6).forEach((item,i)=>{
+    const row=node('div',undefined,'row'),main=node('div',undefined,'row-main');
+    const title=item.name||item.nom||item.stop_name||item.titre||item.nom_ecocentre||item.emplacement||item.street||item.description||item.title||'Lieu';
+    main.append(node('div',title,'row-title'),node('div',detail(item,key),'row-detail'));
+    const calendar=safeUrl(item.google_calendar_url);if(calendar)main.append(link('Ajouter au calendrier ↗',calendar,'source'));
+    const itemSource=safeUrl(item.source_url);if(itemSource)main.append(link('Source du lieu ↗',itemSource,'source'));
+    row.append(node('span',String(i+1).padStart(2,'0'),'number'),main);
+    const mapLinks=node('div',undefined,'map-links');for(const [label,url] of [['OSM ↗',safeUrl(item.openstreetmap_url)],['Google ↗',safeUrl(item.google_maps_url)]])if(url){const a=link(label,url,'map');a.setAttribute('aria-label',`${label} : ${title}`);mapLinks.append(a);}row.append(mapLinks);card.append(row);
+   });
+  }
+  const url=safeUrl(d._meta?.portal_url)||safeUrl(d.source);if(url)card.append(link('Source ↗',url,'source'));
+  const dq=safeUrl(d.donnees_quebec_url);if(dq)card.append(link('Données Québec ↗',dq,'source'));
+ }
+ applyFilter();const time=new Date(data.retrieved_at);const stamp=Number.isNaN(time.valueOf())?'':time.toLocaleTimeString('fr-CA',{hour:'2-digit',minute:'2-digit',timeZone:'America/Toronto'});
+ status([data.address,`${data.radius_m} m`,failures?`${failures} source(s) partielle(s) ou indisponible(s)`:'Données chargées',stamp].filter(Boolean).join(' · '));
+}
+async function load(){if(busy)return;busy=true;$('submit').disabled=true;$('cards').setAttribute('aria-busy','true');status('Recherche dans le quartier…');try{const args={address:$('address').value,radius_m:Number($('radius').value),view:activeFilter};let data;if(embedded){if(!ready)throw new Error('Connexion au tableau de bord en cours. Réessayez.');data=unpack(await rpc('tools/call',{name:'mtl_show_dashboard',arguments:args}));}else{const response=await fetch('/montreal/api',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(args),signal:AbortSignal.timeout(60000)});if(!response.ok)throw new Error('Impossible de charger ce lieu. Vérifiez son nom et réessayez.');const body=await response.json();data=body;}render(data);}catch(e){status(e.message,true);}finally{busy=false;$('submit').disabled=false;$('cards').setAttribute('aria-busy','false');}}
+$('search').addEventListener('submit',e=>{e.preventDefault();load();});document.querySelectorAll('.places:not(.filters) button').forEach(b=>b.onclick=()=>{if(busy)return;$('address').value=b.textContent;load();});
+if(embedded){rpc('ui/initialize',{appInfo:{name:'Montréal',version:'1.0.0'},appCapabilities:{},protocolVersion:'2026-01-26'}).then(result=>{hostContext(result?.hostContext);ready=true;notify('ui/notifications/initialized');new ResizeObserver(()=>notify('ui/notifications/size-changed',{height:Math.min(document.documentElement.scrollHeight,900)})).observe(document.body);}).catch(e=>status(e.message,true));}else{ready=true;}
+</script></body></html>

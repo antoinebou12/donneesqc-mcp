@@ -13,7 +13,7 @@ from helpers.common.http_client import fetch_json
 
 logger = logging.getLogger(__name__)
 
-# Ex.: "275 Rue Notre-Dame Est, Montréal H2Y1C6"
+# Ex.: "Hôtel de Ville de Montréal"
 _CIVIC_LABEL_RE = re.compile(
     r"^(\d+[A-Za-z]?)\s+(.+?),\s*.*?"
     r"([A-Za-z]\d[A-Za-z])\s*(\d[A-Za-z]\d)\s*$",

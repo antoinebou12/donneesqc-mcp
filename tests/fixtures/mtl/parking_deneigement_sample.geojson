@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ID_STA": "207",
+        "ARRONDISSEMENT": "Ville-Marie",
+        "BOROUGH": "Ville-Marie",
+        "NBR_PLA": "36",
+        "X": "300000,00",
+        "Y": "5040000,00",
+        "JURIDICTION": "Municipale",
+        "EMPLACEMENT": "Terrain no. 207 950, rue Notre-Dame Ouest Montréal (Québec) H3C 2K9",
+        "LOCATION": "Lot 207 950 Notre-Dame West",
+        "HEURES": "19:00 à 07:00",
+        "HOURS": "7:00 pm to 7:00 am",
+        "NOTE_FR": "Sauf places réservées",
+        "NOTE_EN": "Except reserved spaces",
+        "TYPE_PAY": "0",
+        "Latitude": "45.496774",
+        "Longitude": "-73.562570"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.56257, 45.496774]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID_STA": "999",
+        "ARRONDISSEMENT": "Ville-Marie",
+        "NBR_PLA": "10",
+        "EMPLACEMENT": "Lot test Hôtel de Ville",
+        "HEURES": "Toujours",
+        "TYPE_PAY": "1",
+        "Latitude": "45.5088",
+        "Longitude": "-73.5541"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.5541, 45.5088]
+      }
+    }
+  ]
+}

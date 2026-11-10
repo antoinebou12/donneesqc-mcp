@@ -5,7 +5,12 @@ from __future__ import annotations
 from datetime import date, datetime, timedelta
 from typing import Any
 
-from helpers.common.calendar_format import CalendarItem, calendar_ascii, google_calendar_url
+from helpers.common.calendar_format import (
+    CalendarItem,
+    calendar_md,
+    google_calendar_url,
+    item_google_maps_url,
+)
 from helpers.common.context import resolve_now, resolve_timezone, resolve_user_location
 from helpers.mtl.calendar_adapters import evenement_row_to_item, festival_event_to_item
 from helpers.mtl.events_common import clamp_limit
@@ -62,6 +67,7 @@ def _item_dict(item: CalendarItem) -> dict[str, Any]:
         "url": item.url,
         "source": item.source,
         "google_calendar_url": google_calendar_url(item),
+        "google_maps_url": item_google_maps_url(item),
     }
 
 
@@ -182,6 +188,7 @@ async def build_events_soon(
 
     deduped.sort(key=_sort_key)
     capped = deduped[:lim]
+    table = calendar_md(capped)
 
     return {
         "query": query or "",
@@ -196,7 +203,8 @@ async def build_events_soon(
         "location_filter": location_filter,
         "count": len(capped),
         "items": [_item_dict(i) for i in capped],
-        "calendar_ascii": calendar_ascii(capped),
+        "calendar_md": table,
+        "calendar_ascii": table,  # alias
         "sources": sources,
         "warning": " | ".join(warnings) if warnings else None,
     }

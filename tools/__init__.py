@@ -76,6 +76,15 @@ def register_all_tools() -> None:
     import importlib
 
     modules = (
+        "tools.mtl.dashboard",
+        "tools.mtl.entraves.find_entraves_nearby",
+        "tools.mtl.parking.find_parking_deneigement_nearby",
+        "tools.mtl.parking.find_restrictions_nearby",
+        "tools.mtl.rem.find_stops_nearby",
+        "tools.mtl.requests311",
+        "tools.mtl.stm.find_stops_nearby",
+        "tools.mtl.weather.find_weather_nearby",
+        "tools.qc.sit.restaurants_nearby",
         # common
         "tools.common.get_version",
         "tools.common.get_context",

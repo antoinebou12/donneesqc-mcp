@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-07-16T00:00:00Z",
+  "source": "fixture",
+  "stop_count": 3,
+  "stops": [
+    {
+      "stop_id": "51543",
+      "stop_name": "Hotel de Ville / Champ-de-Mars",
+      "lat": 45.5088,
+      "lon": -73.5541,
+      "route_ids": ["80", "24"]
+    },
+    {
+      "stop_id": "51544",
+      "stop_name": "Notre-Dame / Place d'Armes",
+      "lat": 45.5048,
+      "lon": -73.5565
+    },
+    {
+      "stop_id": "99999",
+      "stop_name": "Far Away Stop",
+      "lat": 45.6,
+      "lon": -73.7
+    }
+  ]
+}

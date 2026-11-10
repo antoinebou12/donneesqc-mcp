@@ -5,7 +5,18 @@ from __future__ import annotations
 import math
 from typing import Any
 
+from pyproj import Transformer
+
 _EARTH_RADIUS_M = 6_371_000.0
+
+# NAD83 / MTM zone 8 (Montréal) → WGS84
+_MTM8_TO_WGS84 = Transformer.from_crs("EPSG:32188", "EPSG:4326", always_xy=True)
+
+
+def mtm8_to_wgs84(x: float, y: float) -> tuple[float, float]:
+    """Convert NAD83 MTM zone 8 (EPSG:32188) metres to WGS84 (lon, lat)."""
+    lon, lat = _MTM8_TO_WGS84.transform(x, y)
+    return round(lon, 7), round(lat, 7)
 
 
 def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:

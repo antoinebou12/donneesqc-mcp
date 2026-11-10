@@ -16,7 +16,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "mcp[cli]>=1.9.0",
+    "mcp[cli]>=1.26.0",
     "httpx>=0.28.0",
     "uvicorn>=0.34.0",
     "sentry-sdk[httpx]>=2.19.0",
@@ -25,6 +25,7 @@ dependencies = [
     "beautifulsoup4>=4.12.0",
     "sqlglot>=26.0.0",
     "tzdata>=2026.3",
+    "gtfs-realtime-bindings>=2.1.0",
 ]
 
 [project.optional-dependencies]
@@ -59,6 +60,10 @@ include = ["helpers*", "tools*"]
 exclude = ["tests*", "scripts*", "skills*", "docs*"]
 namespaces = false
 
+[tool.setuptools.package-data]
+helpers = ["mtl/data/*.json", "mtl/data/*.json.gz"]
+tools = ["mtl/dashboard.html"]
+
 [tool.vercel]
 entrypoint = "asgi:app"
 
@@ -87,3 +92,6 @@ exclude_dirs = ["tests", ".venv", "scripts", "docs"]
 # B101: asserts in non-test code are rare; B104: MCP binds 0.0.0.0 by design;
 # B608: CKAN SQL strings are schema-derived then validated via sqlglot (see SECURITY.md).
 skips = ["B101", "B104", "B608"]
+
+[tool.ty.environment]
+extra-paths = ["scripts"]

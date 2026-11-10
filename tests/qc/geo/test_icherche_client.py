@@ -50,6 +50,7 @@ async def test_geocode_features_passes_geometry_true():
     ) as mock_fetch:
         features = await geocode_features(_HOTEL_VILLE_QUERY, limit=1)
         assert len(features) == 1
+        assert mock_fetch.await_args is not None
         params = mock_fetch.await_args.kwargs["params"]
         assert params["geometry"] == "true"
         assert params["type"] == "adresses"

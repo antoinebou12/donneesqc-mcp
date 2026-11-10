@@ -1,5 +1,7 @@
 # Données Québec MCP
 
+[Montréal MCP App](docs/montreal-app.md): `mtl_show_dashboard` · `ui://mtl-mcp/montreal.html`
+
 [![CI](https://github.com/Stefen-Taime/donneesqc-mcp/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Stefen-Taime/donneesqc-mcp/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-green.svg)](https://python.org)

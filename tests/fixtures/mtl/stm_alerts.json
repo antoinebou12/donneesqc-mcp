@@ -1,0 +1,19 @@
+{
+  "metro": [
+    {
+      "id": "m1",
+      "name": "Ligne orange",
+      "short_name": "orange",
+      "messages": [{"Header": "Retard", "Text": "Retard de 5 minutes", "Priority": 1}]
+    }
+  ],
+  "bus": [
+    {
+      "id": "b1",
+      "name": "80 - Avenue du Parc",
+      "short_name": "80",
+      "messages": [{"Header": "Detour", "Text": "Detour via Hutchison", "Priority": 0}]
+    }
+  ],
+  "train": []
+}

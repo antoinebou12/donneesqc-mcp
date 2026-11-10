@@ -398,6 +398,7 @@ async def test_get_catalog_stats():
         assert "chart" not in result
         assert "ascii" not in result
         mock_ps.assert_awaited_once()
+        assert mock_ps.await_args is not None
         assert mock_ps.await_args.kwargs.get("facet_fields") == ["groups"]
 
 
@@ -438,4 +439,5 @@ async def test_get_catalog_stats_organization_filter():
         assert result["organization"] == "ville-de-montreal"
         assert result["top_groups"][0]["name"] == "Gouvernement et finances"
         assert result["top_groups"][0]["datasets"] == 115
+        assert mock_ps.await_args is not None
         assert mock_ps.await_args.kwargs.get("fq") == "organization:ville-de-montreal"

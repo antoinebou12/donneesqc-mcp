@@ -22,7 +22,7 @@ async def find_bixi_nearby(
     Flux: gbfs.velobixi.com (station_information + station_status).
 
     Parameters:
-        address: Adresse a geocoder (ex. '275 Rue Notre-Dame Est, Montreal').
+        address: Adresse a geocoder (ex. 'Hôtel de Ville de Montréal').
         latitude: Latitude WGS84 (avec longitude).
         longitude: Longitude WGS84.
         radius_m: Rayon en metres (50-5000, defaut 600).

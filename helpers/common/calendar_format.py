@@ -1,7 +1,8 @@
-"""Day-agenda ASCII calendars and Google Calendar TEMPLATE links.
+"""Day-agenda markdown calendars and Google Calendar TEMPLATE links.
 
-Chat may paste ``calendar_ascii`` for schedules. Rankings still use markdown
-tables - do not use ASCII bar charts (see skills/donneesqc-mcp/SKILL.md).
+Chat may paste ``calendar_md`` for schedules (``calendar_ascii`` is an alias).
+Rankings still use markdown tables — do not use ASCII bar charts
+(see skills/mtl-mcp/SKILL.md).
 """
 
 from __future__ import annotations
@@ -12,13 +13,16 @@ from typing import Any
 from urllib.parse import quote, urlencode
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
+from helpers.common.maps_format import google_maps_url as maps_pin_url
+
 try:
     _TZ: ZoneInfo | timezone = ZoneInfo("America/Toronto")
 except ZoneInfoNotFoundError:
     # Windows / minimal images without tzdata: EDT fallback (UTC-4)
     _TZ = timezone(timedelta(hours=-4))
 
-_MAX_ASCII_LINES = 40
+_MAX_TABLE_ROWS = 40
+_EMPTY_CELL = "—"
 
 _WEEKDAYS_FR = ("Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim")
 _MONTHS_FR = (
@@ -49,6 +53,8 @@ class CalendarItem:
     place: str | None
     url: str | None
     source: str
+    latitude: float | None = None
+    longitude: float | None = None
 
 
 def _parse_start(raw: str | None) -> datetime | date | None:
@@ -132,10 +138,19 @@ def google_calendar_url(item: CalendarItem) -> str | None:
     return "https://calendar.google.com/calendar/render?" + urlencode(params, quote_via=quote)
 
 
-def _day_header(d: date) -> str:
+def item_google_maps_url(item: CalendarItem) -> str | None:
+    """Build a Google Maps pin URL from coords or place text."""
+    return maps_pin_url(
+        latitude=item.latitude,
+        longitude=item.longitude,
+        address=item.place,
+    )
+
+
+def _date_label(d: date) -> str:
     wd = _WEEKDAYS_FR[d.weekday()]
     month = _MONTHS_FR[d.month - 1]
-    return f"=== {wd} {d.day} {month} {d.year} ==="
+    return f"{wd} {d.day} {month} {d.year}"
 
 
 def _time_label(item: CalendarItem, parsed: datetime | date) -> str:
@@ -146,8 +161,7 @@ def _time_label(item: CalendarItem, parsed: datetime | date) -> str:
     return f"{local.hour:02d}h{local.minute:02d}"
 
 
-def _line_for_item(item: CalendarItem, parsed: datetime | date) -> str:
-    time_lbl = _time_label(item, parsed)
+def _kind_label(item: CalendarItem) -> str:
     kind_label = {
         "festival": item.source.capitalize() if item.source else "Festival",
         "avis": "Avis",
@@ -160,22 +174,33 @@ def _line_for_item(item: CalendarItem, parsed: datetime | date) -> str:
             "off": "OfF Piknic",
             "petit": "Petit Piknic",
         }.get(item.source, item.source.capitalize())
-    body = f"{kind_label} · {item.title}"
-    if item.place:
-        body = f"{body} @ {item.place}"
-    return f"{time_lbl}  {body}"
+    return kind_label
 
 
-def calendar_ascii(items: list[CalendarItem], *, max_lines: int = _MAX_ASCII_LINES) -> str:
-    """Render a day-agenda ASCII calendar (layout C)."""
+def _event_label(item: CalendarItem) -> str:
+    return f"{_kind_label(item)} · {item.title}"
+
+
+def _md_cell(text: str) -> str:
+    """Escape pipe characters for markdown table cells."""
+    return text.replace("|", "\\|").replace("\n", " ").strip() or _EMPTY_CELL
+
+
+def _md_link(label: str, url: str | None) -> str:
+    if not url:
+        return _EMPTY_CELL
+    return f"[{label}]({url})"
+
+
+def _dated_sorted(
+    items: list[CalendarItem],
+) -> list[tuple[date, datetime | date, CalendarItem]]:
     dated: list[tuple[date, datetime | date, CalendarItem]] = []
     for item in items:
         parsed = _parse_start(item.start)
         if parsed is None:
             continue
         dated.append((_as_local_date(parsed), parsed, item))
-    if not dated:
-        return ""
 
     def _sort_key(t: tuple[date, datetime | date, CalendarItem]) -> tuple[date, int, datetime | date]:
         day, parsed, item = t
@@ -183,27 +208,44 @@ def calendar_ascii(items: list[CalendarItem], *, max_lines: int = _MAX_ASCII_LIN
         return (day, 0 if all_day else 1, parsed)
 
     dated.sort(key=_sort_key)
+    return dated
 
-    lines: list[str] = []
-    current_day: date | None = None
+
+def calendar_md(items: list[CalendarItem], *, max_rows: int = _MAX_TABLE_ROWS) -> str:
+    """Render a markdown agenda table with Calendrier and Maps link columns."""
+    dated = _dated_sorted(items)
+    if not dated:
+        return ""
+
+    lines = [
+        "| Date | Heure | Événement | Lieu | Calendrier | Maps |",
+        "|------|-------|-----------|------|------------|------|",
+    ]
     omitted = 0
     for day, parsed, item in dated:
-        header = _day_header(day)
-        line = _line_for_item(item, parsed)
-        needed = (1 if day != current_day else 0) + 1
-        if len(lines) + needed > max_lines:
+        if len(lines) - 2 >= max_rows:
             omitted += 1
             continue
-        if day != current_day:
-            if lines:
-                lines.append("")
-            lines.append(header)
-            current_day = day
-        lines.append(line)
+        gcal = google_calendar_url(item)
+        maps = item_google_maps_url(item)
+        row = (
+            f"| {_md_cell(_date_label(day))} "
+            f"| {_md_cell(_time_label(item, parsed))} "
+            f"| {_md_cell(_event_label(item))} "
+            f"| {_md_cell(item.place or '')} "
+            f"| {_md_link('Ajouter', gcal)} "
+            f"| {_md_link('Carte', maps)} |"
+        )
+        lines.append(row)
 
     if omitted:
         lines.append(f"… (+{omitted})")
     return "\n".join(lines)
+
+
+def calendar_ascii(items: list[CalendarItem], *, max_lines: int = _MAX_TABLE_ROWS) -> str:
+    """Alias for ``calendar_md`` (compat; prefer ``calendar_md``)."""
+    return calendar_md(items, max_rows=max_lines)
 
 
 def attach_calendar(
@@ -212,7 +254,7 @@ def attach_calendar(
     *,
     list_key: str,
 ) -> dict[str, Any]:
-    """Add ``google_calendar_url`` on each list row and ``calendar_ascii`` on payload."""
+    """Add GCal + Maps URLs on each list row and ``calendar_md`` on payload."""
     out = dict(payload)
     rows = list(out.get(list_key) or [])
     enriched: list[dict[str, Any]] = []
@@ -221,9 +263,13 @@ def attach_calendar(
         item = items[idx] if idx < len(items) else None
         if item is not None:
             row_out["google_calendar_url"] = google_calendar_url(item)
+            row_out["google_maps_url"] = item_google_maps_url(item)
         else:
             row_out.setdefault("google_calendar_url", None)
+            row_out.setdefault("google_maps_url", None)
         enriched.append(row_out)
     out[list_key] = enriched
-    out["calendar_ascii"] = calendar_ascii(items)
+    table = calendar_md(items)
+    out["calendar_md"] = table
+    out["calendar_ascii"] = table  # alias for one release
     return out
